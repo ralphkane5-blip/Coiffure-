@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coiff'Style · Homme · Garçon · Fille</title>
+  <!-- Font Awesome 6 (gratuit) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts : Poppins élégant -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: #faf7f2;
+      color: #1e1e1e;
+      line-height: 1.6;
+    }
+
+    /* ===== ANIMATIONS GÉNÉRALES ===== */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+      50% { transform: scale(1.05); box-shadow: 0 8px 20px rgba(193, 154, 107, 0.4); }
+      100% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    }
+
+    /* ===== HEADER & NAV ===== */
+    header {
+      background: #1e1e1e;
+      color: white;
+      padding: 0.8rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .logo span {
+      color: #c19a6b;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #eee;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+      font-size: 1.1rem;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #c19a6b;
+      bottom: -5px;
+      left: 0;
+      transition: 0.3s;
+    }
+    .nav-links a:hover {
+      color: #c19a6b;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== BOUTON WHATSAPP FLOTTANT ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: 0.3s;
+      animation: pulse 2s infinite;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      background: #20b859;
+      transform: scale(1.1) rotate(5deg);
+      animation: none;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 90vh;
+      background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "✂️";
+      font-size: 20vw;
+      position: absolute;
+      opacity: 0.03;
+      bottom: 0;
+      right: 0;
+      transform: rotate(-15deg);
+      pointer-events: none;
+    }
+    .hero-content {
+      max-width: 800px;
+      animation: fadeUp 1.2s ease;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 8vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span {
+      color: #c19a6b;
+      border-bottom: 3px solid #c19a6b;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 35px;
+      background: #c19a6b;
+      color: #1e1e1e;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      box-shadow: 0 8px 15px rgba(193, 154, 107, 0.3);
+      border: 2px solid transparent;
+      margin: 0.5rem;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #c19a6b;
+      color: #c19a6b;
+      box-shadow: none;
+    }
+    .btn:hover {
+      background: #b08756;
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(193, 154, 107, 0.5);
+    }
+    .btn-outline:hover {
+      background: #c19a6b;
+      color: #1e1e1e;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 5rem 5%;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      width: 100px;
+      height: 4px;
+      background: #c19a6b;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    /* ===== SERVICES CARDS (prix FCFA) ===== */
+    .services-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem 1.5rem;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+      flex: 1 1 280px;
+      max-width: 320px;
+      text-align: center;
+      transition: 0.4s;
+      border-bottom: 4px solid transparent;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s forwards;
+    }
+    .service-card:nth-child(1) { animation-delay: 0.2s; }
+    .service-card:nth-child(2) { animation-delay: 0.4s; }
+    .service-card:nth-child(3) { animation-delay: 0.6s; }
+
+    .service-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      border-bottom: 4px solid #c19a6b;
+      box-shadow: 0 25px 40px rgba(193, 154, 107, 0.2);
+    }
+    .service-card i {
+      font-size: 3.5rem;
+      color: #c19a6b;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .service-card .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c2c2c;
+      background: #f0e5d9;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      margin-top: 1rem;
+    }
+    .price small {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    /* ===== GALERIE ANIMÉE SLIDE IN ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+      aspect-ratio: 4 / 3;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s;
+    }
+    .gallery-item:nth-child(even) {
+      transform: translateX(30px);
+    }
+    .gallery-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .gallery-item:hover {
+      box-shadow: 0 25px 40px rgba(193, 154, 107, 0.5);
+      transform: scale(1.02) translateX(0) !important;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      padding: 1.5rem 1rem 1rem;
+      transform: translateY(100%);
+      transition: 0.4s;
+    }
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    .gallery-overlay span {
+      background: #c19a6b;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1e1e1e;
+    }
+
+    /* ===== CONTACT + WHATSAPP ===== */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      background: white;
+      border-radius: 30px;
+      padding: 3rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    }
+    .contact-info {
+      flex: 1 1 300px;
+    }
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #1e1e1e;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      font-size: 1.2rem;
+    }
+    .contact-detail i {
+      width: 50px;
+      height: 50px;
+      background: #f0e5d9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c19a6b;
+      font-size: 1.5rem;
+    }
+    .whatsapp-large {
+      background: #25D366;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      margin-top: 2rem;
+      border: none;
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    }
+    .whatsapp-large:hover {
+      background: #20b859;
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 20px 30px rgba(37, 211, 102, 0.5);
+    }
+    .contact-form {
+      flex: 2 1 400px;
+    }
+    .contact-form input, 
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin: 0.8rem 0;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #c19a6b;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(193, 154, 107, 0.2);
+    }
+    .contact-form button {
+      background: #c19a6b;
+      color: #1e1e1e;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact-form button:hover {
+      background: #b08756;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1e1e1e;
+      color: #aaa;
+      text-align: center;
+      padding: 2rem;
+      font-size: 1rem;
+    }
+    footer a {
+      color: #c19a6b;
+      text-decoration: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .contact-container {
+        padding: 2rem;
+      }
+      .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 1.8rem;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+    @media (max-width: 480px) {
+      .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+      .service-card {
+        padding: 1.8rem 1rem;
+      }
+    }
+
+    /* classe pour que l'animation se déclenche au scroll (JS) */
+    .fade-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fade-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">✂️ Coiff'<span>Style</span></div>
+  <nav class="nav-links">
+    <a href="#accueil">Accueil</a>
+    <a href="#services">Prestations</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact">Contact</a>
+    <a href="#prix">Prix</a>
+  </nav>
+</header>
+
+<!-- WHATSAPP FLOTTANT -->
+<a href="https://wa.me/221771234567?text=Bonjour%20je%20souhaite%20prendre%20rendez-vous%20au%20salon%20Coiff'Style" target="_blank" class="whatsapp-float" aria-label="Whatsapp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- HERO / ACCUEIL -->
+<section id="accueil" class="hero">
+  <div class="hero-content">
+    <h1>Le style <span>homme, garçon & fille</span></h1>
+    <p>Coupes modernes, tendances & tradition · Ambiance conviviale</p>
+    <a href="#services" class="btn">Nos prix FCFA <i class="fas fa-chevron-right"></i></a>
+    <a href="#contact" class="btn btn-outline">Prendre RDV</a>
+  </div>
+</section>
+
+<!-- SERVICES & PRIX (FCFA) -->
+<section id="services">
+  <h2 class="section-title">✨ Prestations & tarifs</h2>
+  <div class="services-container">
+    <div class="service-card">
+      <i class="fas fa-male"></i>
+      <h3>Homme</h3>
+      <p>Coupe + coiffage · barbe · soin</p>
+      <div class="price">5 000 <small>FCFA</small></div>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-child"></i>
+      <h3>Garçon</h3>
+      <p>Coupe enfant · tendances · dégradé</p>
+      <div class="price">3 500 <small>FCFA</small></div>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-female"></i>
+      <h3>Fille</h3>
+      <p>Coupe · tresses · chignons · soin</p>
+      <div class="price">4 500 <small>FCFA</small></div>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 2rem; font-weight: 300; color: #666;">* Forfait lavant inclus · Supplément coloration ou mèches sur demande</p>
+</section>
+
+<!-- GALERIE ANIMÉE SLIDE IN -->
+<section id="galerie">
+  <h2 class="section-title">📸 Galerie slide-in</h2>
+  <div class="gallery-grid" id="galleryGrid">
+    <!-- 6 images avec placeholder élégant (Unsplash) -->
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop" alt="Coupe homme"><div class="gallery-overlay"><span>Homme</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=300&fit=crop" alt="Coupe garçon"><div class="gallery-overlay"><span>Garçon</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400&h=300&fit=crop" alt="Coiffure fille"><div class="gallery-overlay"><span>Fille</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&h=300&fit=crop" alt="Barbier"><div class="gallery-overlay"><span>Barbier</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1534297600474-87b32aa0c8d3?w=400&h=300&fit=crop" alt="Tresses filles"><div class="gallery-overlay"><span>Tresses</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1585747867586-8c5a6c8c7b8a?w=400&h=300&fit=crop" alt="Garçon style"><div class="gallery-overlay"><span>Junior</span></div></div>
+  </div>
+</section>
+
+<!-- CONTACT + WHATSAPP DEDANS -->
+<section id="contact">
+  <h2 class="section-title">📞 Contact & WhatsApp</h2>
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>✂️ Coiff'Style</h3>
+      <p><i class="fas fa-map-marker-alt" style="color: #c19a6b;"></i> 123 Avenue de la Coiffure, Dakar, Sénégal</p>
+      <div class="contact-detail">
+        <i class="fas fa-phone-alt"></i>
+        <span>+221 77 123 45 67</span>
+      </div>
+      <div class="contact-detail">
+        <i class="fas fa-envelope"></i>
+        <span>contact@coiffstyle.sn</span>
+      </div>
+      <div class="contact-detail">
+        <i class="far fa-clock"></i>
+        <span>Mar-Sam : 9h–20h · Dim : 15h–19h</span>
+      </div>
+      <!-- GROS BOUTON WHATSAPP (dedans) -->
+      <a href="https://wa.me/221771234567?text=Bonjour%20je%20souhaite%20prendre%20rendez-vous%20" target="_blank" class="whatsapp-large">
+        <i class="fab fa-whatsapp"></i> Écrire sur WhatsApp
+      </a>
+    </div>
+    <div class="contact-form">
+      <h3>Ou laissez un message</h3>
+      <form action="#" method="post">
+        <input type="text" placeholder="Votre nom" required>
+        <input type="tel" placeholder="Téléphone (Whatsapp de préférence)">
+        <textarea rows="4" placeholder="Votre message... (coupe souhaitée, date...)" required></textarea>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- PIED DE PAGE -->
+<footer>
+  <p>© 2025 Coiff'Style — Tous droits réservés · <a href="#">Mentions légales</a></p>
+  <p style="margin-top: 0.5rem;">✂️ Homme · Garçon · Fille — Prix en FCFA</p>
+</footer>
+
+<!-- SCRIPT POUR ANIMATIONS SLIDE IN + SCROLL -->
+<script>
+  (function() {
+    // Animation au scroll pour la galerie (slide-in)
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    // Options de l'observateur
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // facultatif : on peut arrêter d'observer après l'animation
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '0px 0px -50px 0px' }); // un peu de marge
+
+    galleryItems.forEach(item => observer.observe(item));
+
+    // Animation des sections fade (optionnel)
+    const sections = document.querySelectorAll('section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => {
+      section.classList.add('fade-on-scroll');
+      sectionObserver.observe(section);
+    });
+
+    // Ajout d'un petit effet pour les prix (hover)
+    console.log('Site Coiff\'Style chargé avec animations slide-in & WhatsApp');
+  })();
+
+  // Animation supplémentaire : défilement fluide pour les ancres (déjà avec scroll-behavior)
+  // On peut aussi empêcher le comportement par défaut des ancres pour un scroll plus propre (optionnel)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+<!-- Note : les images proviennent d'Unsplash (libres de droits pour usage démo) -->
+</body>
+</html>
